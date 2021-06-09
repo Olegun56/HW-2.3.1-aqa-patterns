@@ -34,7 +34,7 @@ public class CardDeliveryTest {
         $("[data-test-id=agreement]").click();
         $(".button__text").click();
         $(withText("Успешно!")).shouldBe(Condition.visible, Duration.ofSeconds(20));
-        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреч успешно запланирована на " + fakerMethods.localDate(4)));
+        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + fakerMethods.localDate(4)));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class CardDeliveryTest {
         $(".button__text").click();
         $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(Condition.visible, Duration.ofSeconds(20));
         $("[data-test-id=replan-notification] .button__text").click();
-        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреч успешно запланирована на " + fakerMethods.localDate(8)));
+        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + fakerMethods.localDate(8)));
 
     }
 }

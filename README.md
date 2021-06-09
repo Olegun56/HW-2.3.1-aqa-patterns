@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/rpygkilecjk07nmx?svg=true)](https://ci.appveyor.com/project/Olegun56/hw-2-3-1-aqa-patterns)
