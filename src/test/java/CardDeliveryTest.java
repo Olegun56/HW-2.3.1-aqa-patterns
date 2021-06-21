@@ -56,4 +56,27 @@ public class CardDeliveryTest {
         $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + fakerMethods.localDate(8)));
 
     }
+    @Test
+    void shouldInputInvalidName() {
+        $("[data-test-id=city] input").setValue(fakerMethods.city());
+        $("[data-test-id=date] input").doubleClick();
+        $("[data-test-id=date] input").sendKeys(Keys.chord(BACK_SPACE, fakerMethods.localDate(4)));
+        $("[data-test-id=name] input").setValue("Фёдоров Фёдор");
+        $("[data-test-id=phone] input").setValue(fakerMethods.phoneNumber());
+        $("[data-test-id=agreement]").click();
+        $(".button__text").click();
+        $(withText("Успешно!")).shouldBe(Condition.visible, Duration.ofSeconds(20));
+        $("[data-test-id=success-notification] .notification__content").shouldHave(Condition.exactText("Встреча успешно запланирована на " + fakerMethods.localDate(4)));
+    }
+    @Test
+    void shouldInputInvalidPhoneNumber() {
+        $("[data-test-id=city] input").setValue(fakerMethods.city());
+        $("[data-test-id=date] input").doubleClick();
+        $("[data-test-id=date] input").sendKeys(Keys.chord(BACK_SPACE, fakerMethods.localDate(4)));
+        $("[data-test-id=name] input").setValue(fakerMethods.name());
+        $("[data-test-id=phone] input").setValue("+79033");
+        $("[data-test-id=agreement]").click();
+        $(".button__text").click();
+        $(".input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
+    }
 }
